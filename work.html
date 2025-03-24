@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工作經歷</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+body {
+    font-family: 'Lato', 'Open Sans', sans-serif;
+    background-color: white ;粉
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* 導覽列 */
+header {
+    background-color: #b898a4;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 首頁 */
+.home {
+    text-align: center;
+    padding: 50px;
+}
+
+.layout1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile img {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.intro {
+    max-width: 600px;
+}
+
+/* 學歷證照 */
+.timeline {
+    margin: 20px;
+    padding: 20px;
+    border-left: 3px solid #CBA135;
+}
+
+.entry {
+    margin-bottom: 20px;
+    padding-left: 15px;
+}
+
+/* 活動經歷 */
+#activities {
+  padding: 20px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 三列排版 */
+  gap: 20px;
+}
+
+.card {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#work {
+    display: flex;
+    flex-wrap: wrap; /* 允許換行 */
+    justify-content: center; /* 讓內容置中 */
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 calc(33.33% - 20px); /* 一排最多3個，自適應 */
+    min-width: 300px;
+    max-width: 400px;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin: 10px;
+    display: inline-block;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.card-front {
+    background-color: #f4f4f4;
+}
+
+.card-back {
+    background-color: #f4f4f4;
+    color: white;
+    transform: rotateY(180deg);
+    overflow: hidden; 
+}
+.image-container {
+    width: 80%;  /* 讓圖片區域適應卡片大小 */
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* 隱藏超出的部分 */
+}
+.card img {
+  width: 100%;         /* 固定寬度 */
+  height:auto;        /* 固定高度 */
+  object-fit: contain;  /* 保證圖片保持比例並且完全顯示 */
+  border-radius: 8px;
+  cursor: pointer;     /* 鼠標指針變為手形，提示可以點擊 */
+}
+
+.lightbox {
+  display: inline-block;
+  position: relative;
+}
+
+.lightbox img {
+  width: 100%;
+  height: 100%;
+}
+
+.lightbox:focus {
+  outline: none;
+}
+
+/* Lightbox 視窗的樣式 */
+.lightbox-modal {
+  display: none;          /* 默認不顯示 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+
+.lightbox-modal.active {
+  display: flex;          /* 顯示模態視窗 */
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-size: 30px;
+  color: black;
+  padding: 10px;
+  cursor: pointer;
+}
+/* 工作經歷 */
+.work-entry {
+    border-bottom: 1px solid #A6A6A6;
+    padding: 10px 0;
+}
+
+/* 成果花絮 */
+.gallery img {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    flex: 1;
+}
+
+main {
+    flex: 1; /* 讓內容填滿剩餘空間，推動 footer 到底部 */
+}
+
+footer {
+    background: #b898a4;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#achievements {
+  text-align: center;
+  margin: 20px;
+}
+
+.carousel {
+  position: relative;
+  width: 600px;  /* 設定輪播容器的寬度 */
+  height: 400px; /* 設定固定高度 */
+  margin: auto;
+  overflow: hidden;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-image {
+  width: 600px;  /* 每張圖片的寬度固定為 600px */
+  height: 400px; /* 每張圖片的高度固定為 400px */
+  object-fit: cover;  /* 保證圖片不會失真並填滿容器 */
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+.work-entry {
+    text-align: center;
+}
+</style>
+
+
+</head>
+<body>
+
+
+    <!-- 導覽列 -->
+    <header>
+       <nav>
+  <ul>
+    <li><a href="index.html">個人簡介</a></li>
+    <li><a href="education.html">學歷證照</a></li>
+    <li><a href="activities.html">活動經歷</a></li>
+    <li><a href="work.html">工作經歷</a></li>
+    <li><a href="achievements.html">成果花絮</a></li>
+  </ul>
+</nav>
+    </header>
+    <main>
+     <!-- 工作經歷 -->
+    <section id="work">
+        <div class="work-entry">
+             <h2>工作經歷</h2>
+     <div class="card">
+    
+       
+        
+            <h3>站務實習-臺灣高鐵</h3>
+            <p>1.高制度管理使人在面對壓力中茁壯成長</p>
+              <P> 2.時間、安全管理嚴格，使人不怠惰</p>
+              <P> 3.學習臨場反應、應變能力和說話的藝術
+</p>
+             
+        </div>
+        <div class="card">
+
+            <h3>店員-Uii Pie法式甜品店</h3>
+            <p>1.開店、閉店作業</P>
+<P>2.結帳、庫存管理、銷售、包裝甜品</P>
+<P>3.解決顧客疑問</p>
+             
+             
+        </div>
+         <div class="card">
+
+            <h3>前台PT-臺中國家歌劇院</h3>
+            <p>1.場館內外服務及諮詢協助。</p>
+<p>2.前台服務，協助處理相關行政事務。</p>
+<P>3.場館其他交辦事務及各服務站點支援。</p>
+             
+             
+        </div>
+
+         <div class="card">
+
+            <h3>櫃台人員-新漾診所</h3>
+            <p>1.主要執行跟診/掛號/包藥
+</p>
+<p>2.解決病患問題及宣導基礎衛教知識</p>
+<P>
+3.臨場反應能力與面對不耐久候的病患應退進退的話術</p>
+             
+             
+        </div>
+
+           <div class="card">
+
+            <h3>活動現場服務人員-棒棒鯨奇樂園</h3>
+            <p>1.解決顧客遊玩問題</p>
+<p>2.小型活動策劃（包含設計遊戲的內容與玩法</p>
+<P>
+3.現場活動主持，規劃與執行活動，確保活動運行的節奏</p>
+             
+             
+        </div>
+    </section>
+</main>
+     <!-- 底部聯絡資訊 -->
+    <footer>
+
+        <p>聯絡方式：q0981576058@gmail.com | 電話：0912-345-678</p>
+        <a href="mailto:q0981576058@gmail.com">發送郵件</a>
+    </footer>
+<script>
+   let currentIndex = 0;
+
+function moveSlide(step) {
+  const images = document.querySelectorAll(".carousel-image");
+  currentIndex += step;
+
+  if (currentIndex < 0) {
+    currentIndex = images.length - 1;
+  } else if (currentIndex >= images.length) {
+    currentIndex = 0;
+  }
+
+  const newTransformValue = -currentIndex * 600;  // 每張圖片寬度 600px
+  document.querySelector(".carousel-images").style.transform = `translateX(${newTransformValue}px)`;
+}
+
+// Auto-slide every 2 seconds
+setInterval(() => moveSlide(1), 2000);  // 每 2 秒切換一次圖片
+
+
+// 獲取所有的圖片連結
+const lightboxLinks = document.querySelectorAll('.lightbox');
+const modal = document.createElement('div');
+modal.classList.add('lightbox-modal');
+document.body.appendChild(modal);
+
+// 創建關閉按鈕
+const closeButton = document.createElement('button');
+closeButton.classList.add('lightbox-close');
+closeButton.innerHTML = '&times;';
+modal.appendChild(closeButton);
+
+// 當點擊圖片連結時，顯示模態視窗
+lightboxLinks.forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const imgSrc = link.getAttribute('href');  // 取得圖片的原始地址
+    modal.innerHTML = '';  // 清空模態視窗內容
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    modal.appendChild(img);
+    modal.classList.add('active');  // 顯示模態視窗
+    modal.appendChild(closeButton);
+  });
+});
+
+// 當點擊關閉按鈕時，隱藏模態視窗
+closeButton.addEventListener('click', () => {
+  modal.classList.remove('active');
+});
+
+function flipCard(card) {
+    card.classList.toggle('flipped');
+}
+</script>
+</body>
+</html>
