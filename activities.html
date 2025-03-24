@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人網頁</title>
+    <title>活動經歷</title>
     <link rel="stylesheet" href="style.css">
     <style>
 body {
@@ -239,7 +239,6 @@ footer {
     text-align: center;
     padding: 15px;
 }
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -313,63 +312,126 @@ button:hover {
   </ul>
 </nav>
     </header>
+    <main>
+    <!-- 活動經歷 -->
+<section id="activities">
+    <h2>活動經歷</h2>
 
-<main>
-    <!-- 首頁 -->
-    <section id="home" class="home">
-        <div class="layout1">
-            <div class="profile">
-                <img src="個人照片.jfif" alt="個人照片">
-                <h1>陳旻薇 | Shanna</h1>
-                <p>
-
-
-靜宜大學觀光事業學系大四生</p>
-
-<P>是一位積極提升自我的人</p>
+    <!-- 宿舍幹部 -->
+    <div class="card" onclick="flipCard(this)">
+        <div class="card-inner">
+            <!-- 正面 -->
+            <div class="card-front">
+                <h3>擔任區長</h3>
+                <p>112學年度擔任宿舍幹部</p>
+                <p>舉辦各項宿舍活動，身兼活動組組長。</p>
             </div>
-            <div class="intro">
-                <p>團隊合作與企劃製作
-參加敘事力學生團隊
-
-(製作Podcast內容、策展、主持人、腳本撰寫)
-
-我比他人更能專注聆聽團隊意見和精確提出痛點與向上提出現況需求、接受大家批評指導，抗壓性十足。
-
-</p>
-<P>實操經驗
-布展一場響應海洋污染的展覽
-
-從展品製作、展間規劃、線下（熱縮片活動）
-
-、線上（抽獎）活動、發布新聞稿、開幕式
-
-
-
-處事圓滑，多元接觸，橫跨各項活動
-
-擔任淺山精靈臉書小編(撰寫側記、海報編輯)
-擔任通識課課程助教(跟課、撰寫課程紀錄、準備課程材料)</p>
+            <!-- 背面 -->
+            <div class="card-back">
+                <a href="宿舍幹部證明.jpg" class="lightbox">
+                    <img src="宿舍幹部證明.jpg" alt="宿舍幹部證明">
+                </a>
             </div>
         </div>
+    </div>
 
-      </section>
-    </main>  
+    <!-- Podcast製作 -->
+    <div class="card" onclick="flipCard(this)">
+        <div class="card-inner">
+            <!-- 正面 -->
+            <div class="card-front">
+                <h3>Podcast製作</h3>
+                <p>敘事力學生團隊 - 節目證明</p>
+                <p>製作播客內容、企劃執行和製作、採訪及訪談前置作業。</p>
+            </div>
+            <!-- 背面 -->
+            <div class="card-back">
+                <a href="Podcast製作證明書.jpg" class="lightbox">
+                    <img src="Podcast製作證明書.jpg" alt="Podcast 製作證明書">
+                </a>
+            </div>
+        </div>
+    </div>
 
-    
-
-   
-
-  
-   
-
- <!-- 底部聯絡資訊 -->
+    <!-- 外籍生輔導志工 -->
+    <div class="card" onclick="flipCard(this)">
+        <div class="card-inner">
+            <!-- 正面 -->
+            <div class="card-front">
+                <h3>外籍生輔導志工</h3>
+                <p>擔任華語角語言交換志工，跨國文化交流，包容性及開拓國際觀。</p>
+            </div>
+            <!-- 背面 -->
+            <div class="card-back">
+                <a href="華語角志工證書.jpg" class="lightbox">
+                    <img src="華語角志工證書.jpg" alt="華語角志工證書">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+   </main>  
+<!-- 底部聯絡資訊 -->
     <footer>
 
         <p>聯絡方式：q0981576058@gmail.com | 電話：0912-345-678</p>
         <a href="mailto:q0981576058@gmail.com">發送郵件</a>
     </footer>
+<script>
+   let currentIndex = 0;
+
+function moveSlide(step) {
+  const images = document.querySelectorAll(".carousel-image");
+  currentIndex += step;
+
+  if (currentIndex < 0) {
+    currentIndex = images.length - 1;
+  } else if (currentIndex >= images.length) {
+    currentIndex = 0;
+  }
+
+  const newTransformValue = -currentIndex * 600;  // 每張圖片寬度 600px
+  document.querySelector(".carousel-images").style.transform = `translateX(${newTransformValue}px)`;
+}
+
+// Auto-slide every 2 seconds
+setInterval(() => moveSlide(1), 2000);  // 每 2 秒切換一次圖片
 
 
+// 獲取所有的圖片連結
+const lightboxLinks = document.querySelectorAll('.lightbox');
+const modal = document.createElement('div');
+modal.classList.add('lightbox-modal');
+document.body.appendChild(modal);
+
+// 創建關閉按鈕
+const closeButton = document.createElement('button');
+closeButton.classList.add('lightbox-close');
+closeButton.innerHTML = '&times;';
+modal.appendChild(closeButton);
+
+// 當點擊圖片連結時，顯示模態視窗
+lightboxLinks.forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const imgSrc = link.getAttribute('href');  // 取得圖片的原始地址
+    modal.innerHTML = '';  // 清空模態視窗內容
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    modal.appendChild(img);
+    modal.classList.add('active');  // 顯示模態視窗
+    modal.appendChild(closeButton);
+  });
+});
+
+// 當點擊關閉按鈕時，隱藏模態視窗
+closeButton.addEventListener('click', () => {
+  modal.classList.remove('active');
+});
+
+function flipCard(card) {
+    card.classList.toggle('flipped');
+}
+</script>
 </body>
 </html>
