@@ -71,6 +71,15 @@ nav ul li a {
     margin-bottom: 20px;
     padding-left: 15px;
 }
+.image-container img {
+  width:400px;  /* 讓圖片區域適應卡片大小 */
+  height: 600px;  /* 讓高度自適應 */
+   object-fit: contain; 
+   border-radius: 8px; /* 圓角效果 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 增加圖片陰影 */
+  justify-content: center;
+  align-items: center;
+}
 html, body {
     height: 100%;
     margin: 0;
@@ -124,14 +133,24 @@ body {
     </div>
     
     <div class="entry">
+         <div class="image-container">
         <h2>學分學程</h2>
         <p>曾修習韓文為學分學程</p>
+         <img src="韓文學程就讀證明書.jpg" alt="韓文學程就讀證明書">
     </div>
-    
+    </div>
     <div class="entry">
+        <div class="image-container">
         <h2>專業證照</h2>
-        <p>ICDL</p>
+        <p>閩南語語言能力證書</p>
+         <img src="閩南語證書.jpg" alt="閩南語證書">
     </div>
+    </div>
+     <div class="image-container">
+      <p>紅十字會急救員證照</p>
+         <img src="紅十字會證照.jpg" alt="紅十字會證照">
+    </div>
+     </div>
 </section>
  
     </main>  

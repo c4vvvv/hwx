@@ -130,6 +130,9 @@ nav ul li a {
 
 .card-front {
     background-color: #f4f4f4;
+    display: block; /* 改為 block 使內容不會置中 */
+    text-align: left; /* 這裡確保內容左對齊 */
+    padding: 10px;
 }
 
 .card-back {
@@ -322,9 +325,10 @@ button:hover {
         <div class="card-inner">
             <!-- 正面 -->
             <div class="card-front">
-                <h3>擔任區長</h3>
-                <p>112學年度擔任宿舍幹部</p>
-                <p>舉辦各項宿舍活動，身兼活動組組長。</p>
+                <ul><h3>擔任區長</h3>
+                <li>112學年度擔任宿舍幹部</li>
+                <li>舉辦各項宿舍活動，身兼活動組組長</li>
+            </ul>
             </div>
             <!-- 背面 -->
             <div class="card-back">
@@ -340,9 +344,10 @@ button:hover {
         <div class="card-inner">
             <!-- 正面 -->
             <div class="card-front">
+                <ul>
                 <h3>Podcast製作</h3>
-                <p>敘事力學生團隊 - 節目證明</p>
-                <p>製作播客內容、企劃執行和製作、採訪及訪談前置作業。</p>
+                <li>敘事力學生團隊</li>
+                <li>製作播客內容、企劃執行和製作、採訪及訪談前置作業。</li></ul>
             </div>
             <!-- 背面 -->
             <div class="card-back">
@@ -358,9 +363,10 @@ button:hover {
         <div class="card-inner">
             <!-- 正面 -->
             <div class="card-front">
-                <h3>外籍生輔導志工</h3>
-                <p>擔任華語角語言交換志工，跨國文化交流，包容性及開拓國際觀。</p>
-            </div>
+               <ul><h3>外籍生輔導志工</h3>
+                <li>擔任華語角語言交換志工</li>
+               <li> 跨國文化交流，包容性及開拓國際觀</li>
+            </div></ul> 
             <!-- 背面 -->
             <div class="card-back">
                 <a href="華語角志工證書.jpg" class="lightbox">
