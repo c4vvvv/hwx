@@ -120,7 +120,7 @@ nav ul li a {
     transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
+.card-front,.card-back  {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -140,9 +140,13 @@ nav ul li a {
 
 .card-back {
     background-color: #f4f4f4;
-    color: white;
+    color:black;
     transform: rotateY(180deg);
     overflow: hidden; 
+     display: block; /* 改為 block 使內容不會置中 */
+    text-align: left; /* 這裡確保內容左對齊 */
+    padding: 10px;
+     overflow-y: auto; /* 開啟垂直滾動條 */
 }
 .image-container {
     width: 80%;  /* 讓圖片區域適應卡片大小 */
@@ -326,58 +330,133 @@ button:hover {
     <section id="work">
         <div class="work-entry">
              <h2>工作經歷</h2>
-     <div class="card">
-    
+         </div>
+
+     <div class="card" onclick="flipCard(this)">
+        <div class="card-inner">
+            <!-- 正面 -->
+            <div class="card-front">
        
         
-            <h3>站務實習-臺灣高鐵</h3>
-            <p>1.高制度管理使人在面對壓力中茁壯成長</p>
-              <P> 2.時間、安全管理嚴格，使人不怠惰</p>
-              <P> 3.學習臨場反應、應變能力和說話的藝術
-</p>
+            <h3>臺灣高速鐵路股份有限公司</h3>
+        </div>
+         
+
+             <!-- 背面 -->
+            <div class="card-back">
+             <ul>
+                <h3>站務實習</h3>
+        <li>高制度管理使人在面對壓力中茁壯成長</li>
+        <li>時間、安全管理嚴格，使人不怠惰</li>
+        <li>學習臨場反應、應變能力和說話的藝術</li>
+        <li>具充足的細心跟耐心</li>
+
+            </ul> 
+        </div>
+ </div>
+  </div>
+        <div class="card" onclick="flipCard(this)">
+        <div class="card-inner">
+            <!-- 正面 -->
+            <div class="card-front">
+       
+
+            <h3>Uii Pie法式甜品店</h3>
+              </div>
+         
+
+             <!-- 背面 -->
+            <div class="card-back">
+              <ul>
+                <h3>店員</h3>
+        <li>開店、閉店作業</li>
+        <li>結帳、庫存管理、銷售、包裝甜品</li>
+        <li>解決顧客疑問</li>
+    </ul>
+             
+             
+         </div>
+ </div>
+  </div>
+
+         <div class="card" onclick="flipCard(this)">
+        <div class="card-inner">
+            <!-- 正面 -->
+            <div class="card-front">
+
+            <h3>臺中國家歌劇院</h3>
+            </div>
+         
+
+             <!-- 背面 -->
+            <div class="card-back">
+             <ul>
+<h3>前台場館服務PT</h3>                 
+<h3>（一）服務臺</h3>                
+<li>場館內外服務及諮詢協助</li>
+<li>前台服務，協助處理相關行政事務</li>
+<li>場館其他交辦事務及各服務站點支援</li>
+<h3>（二）顧客服務臺</h3>                
+<li>提供場館導覽服務及諮詢。</li>
+<li>會員臨櫃推廣與申辦</li>
+<li>櫃檯售票取票及寄物服務</li>
+<h3>（三） 紀念品店</h3>                
+<li>提供紀念商品銷售服務及商品介紹</li>
+<li>櫃檯帳務與結帳作業</li>
+</ul>
              
         </div>
-        <div class="card">
+ </div>
+  </div>
 
-            <h3>店員-Uii Pie法式甜品店</h3>
-            <p>1.開店、閉店作業</P>
-<P>2.結帳、庫存管理、銷售、包裝甜品</P>
-<P>3.解決顧客疑問</p>
+         <div class="card" onclick="flipCard(this)">
+        <div class="card-inner">
+            <!-- 正面 -->
+            <div class="card-front">
+
+            <h3>新漾診所</h3>
+             </div>
+         
+
+             <!-- 背面 -->
+            <div class="card-back">
+<ul>
+     <h3>櫃台人員</h3>
+<li>主要執行跟診、掛號、包藥</li>
+<li>解決病患問題及宣導基礎衛教知識</li>
+<li>臨場反應能力與面對不耐久候病患的應對話術</li>
+    </ul>
              
              
         </div>
-         <div class="card">
+ </div>
+  </div>
 
-            <h3>前台PT-臺中國家歌劇院</h3>
-            <p>1.場館內外服務及諮詢協助。</p>
-<p>2.前台服務，協助處理相關行政事務。</p>
-<P>3.場館其他交辦事務及各服務站點支援。</p>
-             
-             
-        </div>
 
-         <div class="card">
+           
+         <div class="card" onclick="flipCard(this)">
+        <div class="card-inner">
+            <!-- 正面 -->
+            <div class="card-front">
 
-            <h3>櫃台人員-新漾診所</h3>
-            <p>1.主要執行跟診/掛號/包藥
-</p>
-<p>2.解決病患問題及宣導基礎衛教知識</p>
-<P>
-3.臨場反應能力與面對不耐久候的病患應退進退的話術</p>
-             
-             
-        </div>
 
-           <div class="card">
+            <h3>棒棒鯨奇樂園</h3>
+             </div>
+         
 
-            <h3>活動現場服務人員-棒棒鯨奇樂園</h3>
-            <p>1.解決顧客遊玩問題</p>
-<p>2.小型活動策劃（包含設計遊戲的內容與玩法</p>
-<P>
-3.現場活動主持，規劃與執行活動，確保活動運行的節奏</p>
+             <!-- 背面 -->
+            <div class="card-back">
+            <ul>
+                 <h3>活動現場服務人員</h3>
+        <li>解決顧客遊玩問題</li>
+        <li>小型活動策劃（包含設計遊戲的內容與玩法）</li>
+<li>現場活動主持，規劃與執行活動，確保活動運行的節奏</li>
+    </ul>
              
-             
-        </div>
+          </div>
+ </div>
+  </div>
+
     </section>
 </main>
      <!-- 底部聯絡資訊 -->
