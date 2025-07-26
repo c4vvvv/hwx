@@ -1,169 +1,243 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>學歷證照</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>學歷與證照 | 陳旻薇</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #fdfaf8;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
 
-    <style>
-body {
-    font-family: 'Lato', 'Open Sans', sans-serif;
-    background-color: white ;粉
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
+    header {
+      background-color: #b898a4;
+      padding: 1rem;
+      text-align: center;
+    }
 
-/* 導覽列 */
-header {
-    background-color: #b898a4;
-    padding: 10px 0;
-    text-align: center;
-}
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
 
-/* 首頁 */
-.home {
-    text-align: center;
-    padding: 50px;
-}
+    .flipbook {
+      width: 500px;
+      height: 700px;
+      perspective: 2000px;
+      position: relative;
+    }
 
-.layout1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    .page {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 1s;
+      transform-origin: left;
+      backface-visibility: hidden;
+      overflow: hidden;
+      padding: 2rem;
+      box-sizing: border-box;
+      text-align: center;
+    }
 
-.profile img {
-    width: 150px;
-    border-radius: 50%;
-    margin-bottom: 15px;
-}
+    .page img {
+      width: auto;
+      max-width: 90%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
 
-.intro {
-    max-width: 600px;
-}
+    .page h2 {
+      margin-top: 0;
+      color: #5b4c57;
+    }
 
-/* 學歷證照 */
-.timeline {
-    margin: 20px;
-    padding: 20px;
-    border-left: 3px solid #CBA135;
-}
+    .page:nth-child(1) { z-index: 4; }
+    .page:nth-child(2) { z-index: 3; }
+    .page:nth-child(3) { z-index: 2; }
+    .page:nth-child(4) { z-index: 1; }
 
-.entry {
-    margin-bottom: 20px;
-    padding-left: 15px;
-}
-.image-container img {
-  width:400px;  /* 讓圖片區域適應卡片大小 */
-  height: 600px;  /* 讓高度自適應 */
-   object-fit: contain; 
-   border-radius: 8px; /* 圓角效果 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 增加圖片陰影 */
-  justify-content: center;
-  align-items: center;
-}
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-}
+    .page.flipped {
+      transform: rotateY(-180deg);
+      z-index: 0 !important;
+    }
 
-body {
-    flex: 1;
-}
+    .controls {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
 
-main {
-    flex: 1; /* 讓內容填滿剩餘空間，推動 footer 到底部 */
-}
+    .controls button {
+      padding: 0.5rem 1rem;
+      background: #b898a4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
 
-footer {
-    background: #b898a4;
-    color: white;
-    text-align: center;
-    padding: 15px;
-}
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
+    footer {
+      background: #b898a4;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: auto;
+    }
 
-</style>
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox-modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  </style>
 </head>
+
 <body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">個人簡介</a></li>
+        <li><a href="education.html">學歷證照</a></li>
+        <li><a href="activities.html">活動經歷</a></li>
+        <li><a href="work.html">工作經歷</a></li>
+        <li><a href="achievements.html">成果花絮</a></li>
+      </ul>
+    </nav>
+  </header>
 
- <header>
-       <nav>
-  <ul>
-    <li><a href="index.html">個人簡介</a></li>
-    <li><a href="education.html">學歷證照</a></li>
-    <li><a href="activities.html">活動經歷</a></li>
-    <li><a href="work.html">工作經歷</a></li>
-    <li><a href="achievements.html">成果花絮</a></li>
-  </ul>
-</nav>
-    </header>
+  <main>
+    <h1>學歷與專業證照</h1>
+    <div class="flipbook" id="flipbook">
+      <div class="page">
+        <h2>靜宜大學 - 觀光事業學系</h2>
+        <p>學士學位 | 2021 - 2025</p>
+        <img src="大學畢業證書0001.jpg" alt="大學畢業證書" onclick="openLightbox(this.src)">
+      </div>
 
-<main>
-    
-<section class="timeline">
-    <div class="entry">
-        <h2>靜宜大學 - 學士  - 觀光事業學系</h2>
-        <p> 2021-2025</p>
-    </div>
-    
-    <div class="entry">
-         <div class="image-container">
+      <div class="page">
         <h2>學分學程</h2>
         <p>曾修習韓文為學分學程</p>
-         <img src="韓文學程就讀證明書.jpg" alt="韓文學程就讀證明書">
-    </div>
-    </div>
-    <div class="entry">
-        <div class="image-container">
-        <h2>專業證照</h2>
+        <img src="韓文學程就讀證明書.jpg" alt="韓文學程就讀證明書" onclick="openLightbox(this.src)">
+      </div>
+
+      <div class="page">
+        <h2>語言證照</h2>
         <p>閩南語語言能力證書</p>
-         <img src="閩南語證書.jpg" alt="閩南語證書">
+        <img src="閩南語證書.jpg" alt="閩南語證書" onclick="openLightbox(this.src)">
+      </div>
+
+      <div class="page">
+        <h2>急救員證照</h2>
+        <p>紅十字會急救員證照</p>
+        <img src="紅十字會證照.jpg" alt="紅十字會證照" onclick="openLightbox(this.src)">
+      </div>
     </div>
+
+    <div class="controls">
+      <button onclick="flipPrev()">上一頁 ➜</button>
+      <button onclick="flipNext()">⬅ 下一頁</button>
     </div>
-     <div class="image-container">
-      <p>紅十字會急救員證照</p>
-         <img src="紅十字會證照.jpg" alt="紅十字會證照">
-    </div>
-     </div>
-</section>
- 
-    </main>  
+  </main>
 
+  <div class="lightbox-modal" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
 
-<!-- 底部聯絡資訊 -->
-    <footer>
+  <footer>
+    <p>聯絡方式：<a href="mailto:q0981576058@gmail.com">q0981576058@gmail.com</a> | 電話：0989-067-058
+</p>
+  </footer>
 
-        <p>聯絡方式：q0981576058@gmail.com | 電話：0912-345-678</p>
-        <a href="mailto:q0981576058@gmail.com">發送郵件</a>
-    </footer>
+  <script>
+    const pages = document.querySelectorAll(".page");
+    let current = 0;
 
+    function flipNext() {
+      if (current < pages.length - 1) {
+        pages[current].classList.add("flipped");
+        current++;
+      }
+    }
 
+    function flipPrev() {
+      if (current > 0) {
+        current--;
+        pages[current].classList.remove("flipped");
+      }
+    }
 
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
 </body>
+
 </html>
